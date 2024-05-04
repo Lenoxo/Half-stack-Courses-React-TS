@@ -1,34 +1,10 @@
 import { Content } from "./components/Content";
 import { Header } from "./components/Header";
 import { Total } from "./components/Total";
+import { CoursePart } from "./types";
 
 const App = () => {
   const courseName = "Half Stack application development";
-  interface CoursePartBase {
-    name: string;
-    exerciseCount: number;
-  }
-
-  interface CoursePartDescription extends CoursePartBase {
-    description: string;
-  }
-
-  interface CoursePartBasic extends CoursePartDescription {
-    kind: "basic";
-  }
-
-  interface CoursePartGroup extends CoursePartBase {
-    groupProjectCount: number;
-    kind: "group";
-  }
-
-  interface CoursePartBackground extends CoursePartDescription {
-    backgroundMaterial: string;
-    kind: "background";
-  }
-
-  type CoursePart = CoursePartBasic | CoursePartGroup | CoursePartBackground;
-
   const courseParts: CoursePart[] = [
     {
       name: "Fundamentals",
@@ -72,15 +48,7 @@ const App = () => {
   return (
     <div>
       <Header courseName={courseName} />
-      {courseParts.map((coursePart, index) => {
-        return (
-          <Content
-            key={index}
-            name={coursePart.name}
-            exerciseCount={coursePart.exerciseCount}
-          />
-        );
-      })}
+      <Content courseParts={courseParts} />
       <Total totalExercises={totalExercises} />
     </div>
   );

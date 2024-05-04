@@ -1,12 +1,17 @@
-interface CourseData {
-  name: string;
-  exerciseCount: number;
+import { CoursePart } from "../types";
+import { Part } from "./Part";
+
+interface CourseParts {
+  courseParts: CoursePart[];
 }
 
-export function Content(props: CourseData) {
+export function Content(props: CourseParts) {
   return (
-    <p>
-      {props.name} {props.exerciseCount}
-    </p>
+    <>
+      <h2>Course Parts:</h2>
+      {props.courseParts.map((coursePart) => {
+        return <Part coursePart={coursePart} />;
+      })}
+    </>
   );
 }
