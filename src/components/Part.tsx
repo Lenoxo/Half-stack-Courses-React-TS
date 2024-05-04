@@ -38,6 +38,15 @@ export function Part({ coursePart }: { coursePart: CoursePart }) {
           <p>Material: {coursePart.backgroundMaterial}</p>
         </article>
       );
+    case "special":
+      return (
+        <article>
+          <h3>{coursePart.name}</h3>
+          <p>Exercises: {coursePart.exerciseCount}</p>
+          <p>{coursePart.description}</p>
+          <p>Requirements: {coursePart.requirements}</p>
+        </article>
+      );
 
     default:
       return assertNever(coursePart);
